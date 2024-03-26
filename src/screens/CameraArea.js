@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera/next';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
@@ -8,7 +8,9 @@ const cameraIcon = require('../../assets/icons/switch-camera.png');
 
 export default function CameraArea() {
   const [facing, setFacing] = useState('back');
+  const [scanned, setScanned] = useState(false);
   const [permission, requestPermission] = useCameraPermissions();
+
 
   if (!permission) {
     requestPermission();
